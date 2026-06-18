@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
+        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <div class="search">
+            <input type="text" placeholder="搜尋商品...">
+            <button>搜尋</button>
+        </div>
+        <nav>
+            <a href="products.html">全部商品</a>
+            <a href="activity.html">最新活動</a>
+            <a href="member.html">會員專區</a>
+            <a href="qa.html">常見問題</a>
+        </nav>
+    </header>
+    <div class="product-container">
+        <div class="product-image">
+            <img id="detail-img" src="" alt="商品圖片">
+        </div> 
+        <div class="product-details">
+            <h1 id="detail-name">載入中...</h1>
+            <p id="detail-price" class="price"></p>
+            <p id="detail-slogan" class="slogan"></p>
+            <div class="quantity-section">
+                <label for="quantity">數量：</label>
+                <select id="quantity" class="quantity-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button class="cart-btn" onclick="addToCart()">加入購物車</button>
+            <a href="javascript:history.back()" class="back-btn">返回上一頁</a>
+        </div>
+        <div class="product-sub-section">
+            <div class="sub-box notice-column">
+                <h2>商品注意事項</h2>
+                <ul class="notice-list">
+                    <li><strong>關於花材</strong>：植物具備個體差異，若遇花材缺貨，設計師將以同等價值、色系相近花材微調。</li>
+                    <li><strong>照片色差與個體差異</strong>：實際商品與照片可能會有微幅色差，請以收到之實品為準。</li>
+                    <li><strong>精準尺寸</strong>：因純手工製作，可能存在1~3公分的合理誤差。</li>
+                </ul>
+            </div>
+
+            <div class="product-reviews">
+                <h2>顧客評論</h2>
+                <form id="reviewForm">
+                    <label for="rating">星級評分：</label>
+                    <select id="rating">
+                    <option value="5">★★★★★ (5)</option>
+                    <option value="4">★★★★☆ (4)</option>
+                    <option value="3">★★★☆☆ (3)</option>
+                    <option value="2">★★☆☆☆ (2)</option>
+                    <option value="1">★☆☆☆☆ (1)</option>
+                    </select>
+            
+                    <label for="comment">評論：</label>
+                    <textarea id="comment" rows="3" placeholder="寫下您的心得..."></textarea>
+                    <button type="submit" class="btn" onclick="addToReview()">送出評論</button>
+                </form>
+            
+                <ul id="reviews" style="margin-top:20px;"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const flowerDatabase = {
+            "1": { name: "粉色馬卡龍鬱金香花束", price: "NT$1,680", img: "img/product/famaly1.jpg", slogan: "像馬卡龍一樣甜美，融化她的少女心" },
+            "2": { name: "暖橘色花束", price: "NT$1,250", img: "img/product/famaly2.jpg", slogan: "如煦煦陽光般的溫暖，送給最摯愛的家人" },
+            "3": { name: "白紫色勿忘我花束", price: "NT$1,200", img: "img/product/frend1.png", slogan: "雋永的紫色深情，訴說不曾忘記的約定" },
+            "4": { name: "粉玫瑰 × 淡紫色勿忘我花束", price: "NT$1,500", img: "img/product/frend2.png", slogan: "玫瑰的熱烈遇上勿忘我的溫柔，雙重浪漫" },
+            "5": { name: "西雅圖調香師玫瑰 × 草莓泡泡玫瑰 鮮花束", price: "NT$1,950", img: "img/product/love1.jpg", slogan: "獨特香氣與草莓泡泡，專屬於情人的微甜告白" },
+            "6": { name: "西雅圖調香師玫瑰花束", price: "NT$1,980", img: "img/product/love2.jpg", slogan: "經典優雅，質感男士與女士的品味首選" },
+            "7": { name: "紫色系花束", price: "NT$1,450", img: "img/product/self1.jpg", slogan: "神秘而優雅的紫色，給特別懂生活的你" },
+            "8": { name: "Baby Blue 淺藍色小飛燕 瑪格麗特 花束", price: "NT$1,250", img: "img/product/self2.jpg", slogan: "蔚藍天空般的清澈，捎來夏日最純粹的祝福" },
+            "9": { name: "奶油白 x 碎冰藍非洲菊 小太陽花束",price: "NT$1,780",img: "img/activity/activity.jpg",slogan: "在盛夏的起點，用一抹碎冰藍，祝你勇敢奔赴下一場山海。"},
+            "10": { name: "奶油白非洲菊 小太陽花束",price: "NT$980",img: "img/activity/activity1.jpg",slogan: "纯粹的奶油白，承載著最溫暖的光，下一個篇章依然向陽而生。"},
+            "11": { name: "Little Sunshine 韓系單支小太陽 非洲菊",price: "NT$680",img: "img/activity/activity2.jpg",slogan: "帶上這朵小太陽，出發吧！不論去哪，都有陽光為你引路。"}
+        };
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id'); 
+        const productInfo = flowerDatabase[productId];
+        if (productInfo) {
+            document.getElementById('detail-name').innerText = productInfo.name;
+            document.getElementById('detail-price').innerText = productInfo.price;
+            document.getElementById('detail-img').src = productInfo.img;
+            document.getElementById('detail-img').alt = productInfo.name;
+            document.getElementById('detail-slogan').innerText = productInfo.slogan; // 塞入專屬標語
+            
+            document.title = productInfo.name + " - 商品詳情"; // 同步修改瀏覽器分頁標題
+        } else {
+            document.getElementById('detail-name').innerText = "抱歉，找不到該商品！";
+            document.getElementById('detail-price').innerText = "";
+            document.getElementById('detail-slogan').innerText = "";
+        }
+        function addToCart() {
+            if (productInfo) {
+                alert(`已將「${productInfo.name}」成功加入購物車！🛒`);
+            }
+        }
+
+        const reviewForm = document.getElementById("reviewForm");
+        const ratingSelect = document.getElementById("rating");
+        const commentInput = document.getElementById("comment");
+        const reviewsList = document.getElementById("reviews");
+
+        function loadReviews() {
+        const reviews = JSON.parse(localStorage.getItem("reviews_" + productId)) || [];
+        reviewsList.innerHTML = "";
+
+        if (reviews.length === 0) {
+            reviewsList.innerHTML = "<li>目前沒有評論</li>";
+            document.getElementById("averageRating").textContent = "";
+            return;
+        }
+
+        reviews.forEach(r => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</strong> - ${r.comment}`;
+            reviewsList.appendChild(li);
+        });
+        }
+
+        reviewForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const rating = parseInt(ratingSelect.value);
+        const comment = commentInput.value.trim();
+
+        if (!comment) {
+            alert("請輸入評論內容");
+            return;
+        }
+
+        const reviews = JSON.parse(localStorage.getItem("reviews_" + productId)) || [];
+        reviews.push({ rating, comment });
+        localStorage.setItem("reviews_" + productId, JSON.stringify(reviews));
+
+        commentInput.value = "";
+        ratingSelect.value = "5";
+        loadReviews();
+        });
+
+        // 初始載入
+        loadReviews();
+    </script>
+    <footer class="footer footer-advanced">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
+                    <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h2>快速連結</h2>
+                <a href="home.html">首頁</a>
+                <a href="products.html">全部商品</a>
+                <a href="activity.html">最新活動</a>
+                <a href="member.html">會員專區</a>
+                <a href="qa.html">常見問題</a>
+            </div>
+            <div class="footer-col">
+                <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+                <p>線上客服</p>
+                <p><img src="img/icon/envelope.png" class="footer-icon"> tracy20051208@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
+    </footer>
+</body>
+</html>
