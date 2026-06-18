@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員專區 |花時間花店</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
+        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <div class="search">
+            <input type="text" placeholder="搜尋商品...">
+            <button>搜尋</button>
+        </div>
+        <nav>
+            <a href="products.html">全部商品</a>
+            <a href="activity.html">最新活動</a>
+            <a href="member.html">會員專區</a>
+            <a href="qa.html">常見問題</a>
+        </nav>
+    </header>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h2 class="brand-title">會員登入</h2>
+            <p class="brand-subtitle">Time to Bloom</p>
+
+            <form id="loginForm">
+                <div class="input-field">
+                    <input type="email" id="email" required placeholder="電子郵件 (Email)">
+                </div>
+            
+                <div class="input-field">
+                    <input type="password" id="password" required placeholder="密碼 (Password)">
+                </div>
+                <button type="submit" class="submit-btn">登入</button>
+            </form>
+
+            <div class="form-footer">
+                <a href="#">忘記密碼</a> ｜ <a href="#">立即註冊</a>
+            </div>
+        </div>
+    </div>
+    <div id="userInfo" class="form-box hidden">
+      <h3>會員資訊</h3>
+      <p>Hi，<span id="userName"></span></p>
+      <button id="logoutBtn" class="btn">登出</button>
+
+      <!-- 購買記錄 -->
+      <h3 style="margin-top:20px;">購買記錄</h3>
+      <table id="purchaseHistoryTable" class="history-table">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>商品</th>
+            <th>加購</th>
+            <th>數量</th>
+            <th>小計</th>
+            <th>收件人</th>
+            <th>電話</th>
+            <th>地址</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="purchaseHistory"></tbody>
+      </table>
+
+      <!-- 我的評論 -->
+      <h3 style="margin-top:30px;">我的評論</h3>
+      <ul id="myReviews" class="review-list"></ul>
+
+      <!-- 會員資料編輯表單 -->
+      <h3 style="margin-top:30px;">編輯會員資料</h3>
+      <form id="editForm">
+        <div class="form-group">
+          <label for="email">信箱</label>
+          <input type="email" id="email" placeholder="更新信箱">
+        </div>
+        <div class="form-group">
+          <label for="newPassword">新密碼</label>
+          <input type="password" id="newPassword" placeholder="輸入新密碼">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn">更新資料</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="footer footer-advanced">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
+                    <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h2>快速連結</h2>
+                <a href="home.html">首頁</a>
+                <a href="products.html">全部商品</a>
+                <a href="activity.html">最新活動</a>
+                <a href="member.html">會員專區</a>
+                <a href="qa.html">常見問題</a>
+            </div>
+            <div class="footer-col">
+                <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+                <p>線上客服</p>
+                <p><img src="img/icon/envelope.png" class="footer-icon"> tracy20051208@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
+    </footer>
+</body>
+</html>
