@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 | 花時間花店</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+        <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
+        <div class="search">
+            <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+            <button onclick="handleNavSearch()">搜尋</button>
+        </div>
+        <nav>
+            <a href="products.html">全部商品</a>
+            <a href="activity.html">最新活動</a>
+            <a href="member.html">會員專區</a>
+            <a href="aboutus.html">關於我們</a>
+            <a href="qa.html">常見問題</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <a href="activity.html"><img src="img/activity/act.jpg" alt="活動廣告"></a>
+            </div>
+            <div class="mySlides fade">
+                <a href="product.html?id=1"><img src="img/product/famaly1.jpg" alt="商品 1"></a>
+            </div>
+            <div class="mySlides fade">
+                <a href="product.html?id=5"><img src="img/product/love1.jpg" alt="商品 5"></a>
+            </div>
+            <div class="mySlides fade">
+                <a href="product.html?id=6"><img src="img/product/love2.jpg" alt="商品 6"></a>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">‹</a>
+            <a class="next" onclick="plusSlides(1)">›</a>
+            </div>
+        <div class="dots">
+            <span class="dot" onclick="currentSlides(0)"></span>
+            <span class="dot" onclick="currentSlides(1)"></span>
+            <span class="dot" onclick="currentSlides(2)"></span>
+            <span class="dot" onclick="currentSlides(3)"></span>
+        </div>
+    </section>
+    <h1 class="section-title">今天，想把時間花在誰身上？</h1>
+    <section class="home-cards-section">
+  
+        <div class="card-container">
+            <div class="card-item">
+                <a href="self.html">
+                    <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364');"></div>
+                    <div class="card-info">
+                        <h3>給自己</h3>
+                        <p>把最好的時間，留給值得被寵愛的自己。</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card-item">
+                <a href="famaly.html">
+                    <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2');"></div>
+                    <div class="card-info">
+                        <h3>給家人</h3>
+                        <p>歲月漫漫，用一束溫暖報答最日常的陪伴。</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card-item">
+                <a href="frend.html">
+                    <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac');"></div>
+                    <div class="card-info">
+                        <h3>給朋友</h3>
+                        <p>雖然不常聯絡，但生活中總有時間想念你。</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card-item">
+                <a href="love.html">
+                    <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7');"></div>
+                    <div class="card-info">
+                        <h3>給愛的人</h3>
+                        <p>遇見你之後，我最想花時間在有你的未來。</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <h1 class="section-title">熱門商品</h1>
+    <section class="featured">
+        <article class="product-card">
+                <a href="product.html?id=5">
+                    <figure><img src="img/product/love1.jpg" alt="西雅圖調香師玫瑰 × 草莓泡泡玫瑰 鮮花束"></figure>
+                    <div class="product-info">
+                        <h3>西雅圖調香師玫瑰 × 草莓泡泡玫瑰 鮮花束</h3>
+                        <p class="price">NT$1,950</p>
+                    </div>
+                </a>
+        </article>
+        <article class="product-card">
+                <a href="product.html?id=6">
+                    <figure><img src="img/product/love2.jpg" alt="西雅圖調香師玫瑰花束"></figure>
+                    <div class="product-info">
+                        <h3>西雅圖調香師玫瑰花束</h3>
+                        <p class="price">NT$1,980</p>
+                    </div>
+                </a>
+        </article>
+        <article class="product-card">
+                <a href="product.html?id=1">
+                    <figure><img src="img/product/famaly1.jpg" alt="粉色馬卡龍鬱金香花束"></figure>
+                    <div class="product-info">
+                        <h3>粉色馬卡龍鬱金香花束</h3>
+                        <p class="price">NT$1,680</p>
+                    </div>
+                </a>
+        </article>
+    </section>
+    <footer class="footer footer-advanced">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
+                    <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h2>快速連結</h2>
+                <a href="index.html">首頁</a>
+                <a href="products.html">全部商品</a>
+                <a href="activity.html">最新活動</a>
+                <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
+                <a href="qa.html">常見問題</a>
+            </div>
+            <div class="footer-col">
+                <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+                <p>線上客服</p>
+                <p><img src="img/icon/envelope.png" class="footer-icon"> tracy20051208@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
+    </footer>
+    <script>
+        // 輪播
+        let slideIndex = 0, timer = null;
+        document.addEventListener("DOMContentLoaded", () => {
+            showSlides(slideIndex);
+            autoPlay();
+        });
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function currentSlides(n) { showSlides(slideIndex = n); }
+        function showSlides(n) {
+            clearTimeout(timer);
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].classList.add("active");
+        }
+        function autoPlay() {
+            slideIndex++;
+            showSlides(slideIndex);
+            timer = setTimeout(autoPlay, 3000);
+        }
+
+        function handleNavSearch() {
+            const searchInput = document.getElementById("navSearchInput");
+            if (!searchInput) return;
+
+            const keyword = searchInput.value.trim();
+
+            if (keyword === "") {
+                alert("請輸入搜尋關鍵字喔！");
+                return;
+            }
+            localStorage.setItem("searchKeyword", keyword);
+            window.location.href = "products.html";
+        }
+    </script>
+</body>
+</html>

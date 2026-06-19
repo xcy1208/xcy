@@ -8,17 +8,18 @@
 </head>
 <body>
     <header>
-        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
-        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
-        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+        <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
         <div class="search">
-            <input type="text" placeholder="搜尋商品...">
-            <button>搜尋</button>
+            <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+            <button onclick="handleNavSearch()">搜尋</button>
         </div>
         <nav>
             <a href="products.html">全部商品</a>
             <a href="activity.html">最新活動</a>
             <a href="member.html">會員專區</a>
+            <a href="aboutus.html">關於我們</a>
             <a href="qa.html">常見問題</a>
         </nav>
     </header>
@@ -30,17 +31,11 @@
             <h1 id="detail-name">載入中...</h1>
             <p id="detail-price" class="price"></p>
             <p id="detail-slogan" class="slogan"></p>
-            <div class="quantity-section">
-                <label for="quantity">數量：</label>
-                <select id="quantity" class="quantity-select">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <div class="product-qty">
+                <label>數量：</label>
+                <input type="number" id="quantity" value="1" min="1">
             </div>
-            <button class="cart-btn" onclick="addToCart()">加入購物車</button>
+            <button class="cart-btn" id="addToCartBtn" onclick="addToCart()">加入購物車</button>
             <a href="javascript:history.back()" class="back-btn">返回上一頁</a>
         </div>
         <div class="product-sub-section">
@@ -98,17 +93,36 @@
             document.getElementById('detail-price').innerText = productInfo.price;
             document.getElementById('detail-img').src = productInfo.img;
             document.getElementById('detail-img').alt = productInfo.name;
-            document.getElementById('detail-slogan').innerText = productInfo.slogan; // 塞入專屬標語
+            document.getElementById('detail-slogan').innerText = productInfo.slogan;
             
-            document.title = productInfo.name + " - 商品詳情"; // 同步修改瀏覽器分頁標題
+            document.title = productInfo.name + " - 商品詳情"; 
         } else {
             document.getElementById('detail-name').innerText = "抱歉，找不到該商品！";
             document.getElementById('detail-price').innerText = "";
             document.getElementById('detail-slogan').innerText = "";
         }
+
         function addToCart() {
             if (productInfo) {
-                alert(`已將「${productInfo.name}」成功加入購物車！🛒`);
+                const selectedQty = parseInt(document.getElementById('quantity').value);
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingItem = cart.find(item => item.id === productId);
+
+                if (existingItem) {
+                    existingItem.qty += selectedQty;
+                } else {
+                    const cleanPrice = parseInt(productInfo.price.replace(/[^0-9]/g, ''), 10) || 0;
+                    
+                    cart.push({
+                        id: productId,
+                        name: productInfo.name,
+                        basePrice: cleanPrice, 
+                        img: productInfo.img,
+                        qty: selectedQty       
+                    });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`已將 ${selectedQty} 束「${productInfo.name}」成功加入購物車！🛒`);
             }
         }
 
@@ -153,13 +167,26 @@
         loadReviews();
         });
 
-        // 初始載入
         loadReviews();
+
+        function handleNavSearch() {
+            const searchInput = document.getElementById("navSearchInput");
+            if (!searchInput) return;
+
+            const keyword = searchInput.value.trim();
+
+            if (keyword === "") {
+                alert("請輸入搜尋關鍵字喔！");
+                return;
+            }
+            localStorage.setItem("searchKeyword", keyword);
+            window.location.href = "products.html";
+        }
     </script>
     <footer class="footer footer-advanced">
         <div class="footer-container">
             <div class="footer-col">
-                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
                 <div class="footer-social">
                     <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
                     <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
@@ -167,10 +194,11 @@
             </div>
             <div class="footer-col">
                 <h2>快速連結</h2>
-                <a href="home.html">首頁</a>
+                <a href="index.html">首頁</a>
                 <a href="products.html">全部商品</a>
                 <a href="activity.html">最新活動</a>
                 <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
                 <a href="qa.html">常見問題</a>
             </div>
             <div class="footer-col">

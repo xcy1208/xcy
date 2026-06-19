@@ -8,54 +8,54 @@
 </head>
 <body>
     <header>
-        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
-        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
-        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+        <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
         <div class="search">
-            <input type="text" placeholder="搜尋商品...">
-            <button>搜尋</button>
+            <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+            <button onclick="handleNavSearch()">搜尋</button>
         </div>
         <nav>
             <a href="products.html">全部商品</a>
             <a href="activity.html">最新活動</a>
             <a href="member.html">會員專區</a>
+            <a href="aboutus.html">關於我們</a>
             <a href="qa.html">常見問題</a>
         </nav>
     </header>
     <div class="login-wrapper">
         <div class="login-card">
-            <h2 class="brand-title">會員登入</h2>
+            <h2 class="brand-title">會員登入/註冊</h2>
             <p class="brand-subtitle">Time to Bloom</p>
 
             <form id="loginForm">
-                <div class="input-field">
-                    <input type="email" id="email" required placeholder="電子郵件 (Email)">
+                <div class="form-group">
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" placeholder="請輸入帳號">
                 </div>
             
-                <div class="input-field">
-                    <input type="password" id="password" required placeholder="密碼 (Password)">
+                <div class="form-group">
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" placeholder="請輸入密碼">
                 </div>
-                <button type="submit" class="submit-btn">登入</button>
+                <div class="form-actions">
+                    <button type="submit" class="btn">登入</button>
+                    <button type="button" id="registerBtn" class="btn">註冊</button>
+                </div>            
             </form>
-
-            <div class="form-footer">
-                <a href="#">忘記密碼</a> ｜ <a href="#">立即註冊</a>
-            </div>
         </div>
     </div>
+  
     <div id="userInfo" class="form-box hidden">
       <h3>會員資訊</h3>
       <p>Hi，<span id="userName"></span></p>
       <button id="logoutBtn" class="btn">登出</button>
-
-      <!-- 購買記錄 -->
       <h3 style="margin-top:20px;">購買記錄</h3>
       <table id="purchaseHistoryTable" class="history-table">
         <thead>
           <tr>
             <th>日期</th>
             <th>商品</th>
-            <th>加購</th>
             <th>數量</th>
             <th>小計</th>
             <th>收件人</th>
@@ -66,12 +66,8 @@
         </thead>
         <tbody id="purchaseHistory"></tbody>
       </table>
-
-      <!-- 我的評論 -->
       <h3 style="margin-top:30px;">我的評論</h3>
       <ul id="myReviews" class="review-list"></ul>
-
-      <!-- 會員資料編輯表單 -->
       <h3 style="margin-top:30px;">編輯會員資料</h3>
       <form id="editForm">
         <div class="form-group">
@@ -88,10 +84,11 @@
       </form>
     </div>
 
+  </section>
     <footer class="footer footer-advanced">
         <div class="footer-container">
             <div class="footer-col">
-                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
                 <div class="footer-social">
                     <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
                     <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
@@ -99,10 +96,11 @@
             </div>
             <div class="footer-col">
                 <h2>快速連結</h2>
-                <a href="home.html">首頁</a>
+                <a href="index.html">首頁</a>
                 <a href="products.html">全部商品</a>
                 <a href="activity.html">最新活動</a>
                 <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
                 <a href="qa.html">常見問題</a>
             </div>
             <div class="footer-col">
@@ -113,5 +111,21 @@
         </div>
         <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
     </footer>
+    <script src="login.js"></script>
+    <script>
+        function handleNavSearch() {
+        const searchInput = document.getElementById("navSearchInput");
+        if (!searchInput) return;
+
+        const keyword = searchInput.value.trim();
+
+        if (keyword === "") {
+            alert("請輸入搜尋關鍵字喔！");
+            return;
+        }
+        localStorage.setItem("searchKeyword", keyword);
+        window.location.href = "products.html";
+        }
+    </script>
 </body>
 </html>

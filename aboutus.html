@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們｜花時間花店</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+    <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+    <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
+    <div class="search">
+      <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+      <button onclick="handleNavSearch()">搜尋</button>
+    </div>
+    <nav>
+      <a href="products.html">全部商品</a>
+      <a href="activity.html">最新活動</a>
+      <a href="member.html">會員專區</a>
+      <a href="aboutus.html">關於我們</a>
+      <a href="qa.html">常見問題</a>
+    </nav>
+  </header>
+
+  <section class="page">
+    <h2 class="title">關於我們</h2>
+    <p class="text">
+      <b>11344129 謝采妍</b>
+      <br>
+        心得：一開始根本沒有想到做網站是一個這麼困難的事，實際做出來之後發現一個網站要寫這麼多個網頁來支撐。<br>
+        這次主要比較難的感覺是排版的部分，因為以前都是只寫一個網頁，這次是把網頁全部串起來，<br>
+        常常會不小心排版就變得不一樣，或是一些名稱取的不一樣，就要一直反覆做確認，但是整體做完還是感覺學到了很多。<br>
+    </p><br>
+    <p class="text">
+      <b>11344129 郭瑀桐</b>
+      <br>
+        心得：這次的期末專案我們選擇花店當主題<br>
+        我覺得版型規劃是蠻難的部分 然後整體商品發想 我們以花束當作主要推廣的商品<br>
+        後來的成品看起來真的很像專業的商用網站 我覺得這次的經驗也讓我有更豐富的前端經驗<br>
+    </p><br>
+  </section>  
+  <footer class="footer footer-advanced">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
+                    <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h2>快速連結</h2>
+                <a href="index.html">首頁</a>
+                <a href="products.html">全部商品</a>
+                <a href="activity.html">最新活動</a>
+                <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
+                <a href="qa.html">常見問題</a>
+            </div>
+            <div class="footer-col">
+                <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+                <p>線上客服</p>
+                <p><img src="img/icon/envelope.png" class="footer-icon"> tracy20051208@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
+  </footer>
+  <script>
+    function handleNavSearch() {
+      const searchInput = document.getElementById("navSearchInput");
+      if (!searchInput) return;
+
+      const keyword = searchInput.value.trim();
+
+      if (keyword === "") {
+          alert("請輸入搜尋關鍵字喔！");
+          return;
+      }
+      localStorage.setItem("searchKeyword", keyword);
+      window.location.href = "products.html";
+    }
+  </script>
+</body>
+</html>

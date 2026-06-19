@@ -8,17 +8,18 @@
 </head>
 <body>
     <header>
-        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
-        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
-        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+        <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
         <div class="search">
-            <input type="text" placeholder="搜尋商品...">
-            <button>搜尋</button>
+            <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+            <button onclick="handleNavSearch()">搜尋</button>
         </div>
         <nav>
             <a href="products.html">全部商品</a>
             <a href="activity.html">最新活動</a>
             <a href="member.html">會員專區</a>
+            <a href="aboutus.html">關於我們</a>
             <a href="qa.html">常見問題</a>
         </nav>
     </header>
@@ -29,7 +30,7 @@
     <section class="activity-grid">
         <article class="product-card">
             <a href="product.html?id=9">
-                <figure><img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\activity\activity.jpg" alt="奶油白 x 碎冰藍非洲菊 小太陽花束"></figure>
+                <figure><img src="img/activity/activity.jpg" alt="奶油白 x 碎冰藍非洲菊 小太陽花束"></figure>
                 <div class="product-info">
                     <h3>奶油白 x 碎冰藍非洲菊 小太陽花束</h3>
                     <p class="price">NT$1,780</p>
@@ -38,7 +39,7 @@
         </article>
         <article class="product-card">
             <a href="product.html?id=10">
-                <figure><img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\activity\activity1.jpg" alt="奶油白非洲菊 小太陽花束"></figure>
+                <figure><img src="img/activity/activity1.jpg" alt="奶油白非洲菊 小太陽花束"></figure>
                 <div class="product-info">
                     <h3>奶油白非洲菊 小太陽花束</h3>
                     <p class="price">NT$980</p>
@@ -47,7 +48,7 @@
         </article>
         <article class="product-card">
             <a href="product.html?id=11">
-                <figure><img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\activity\activity2.jpg" alt="Little Sunshine 韓系單支小太陽 非洲菊"></figure>
+                <figure><img src="img/activity/activity2.jpg" alt="Little Sunshine 韓系單支小太陽 非洲菊"></figure>
                 <div class="product-info">
                     <h3>Little Sunshine 韓系單支小太陽 非洲菊</h3>
                     <p class="price">NT$680</p>
@@ -59,7 +60,7 @@
     <footer class="footer footer-advanced">
         <div class="footer-container">
             <div class="footer-col">
-                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
                 <div class="footer-social">
                     <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
                     <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
@@ -67,10 +68,11 @@
             </div>
             <div class="footer-col">
                 <h2>快速連結</h2>
-                <a href="home.html">首頁</a>
+                <a href="index.html">首頁</a>
                 <a href="products.html">全部商品</a>
                 <a href="activity.html">最新活動</a>
                 <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
                 <a href="qa.html">常見問題</a>
             </div>
             <div class="footer-col">

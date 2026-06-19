@@ -8,21 +8,21 @@
 </head>
 <body>
     <header>
-        <a href="home.html"><img class="a" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" align="left" /></a>
-        <a href="cart.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\cart.png" align="right"/></a>
-        <a href="login.html"><img class="b" src="C:\Users\tracy\OneDrive\桌面\第十二組\img\icon\member.png" align="right"/></a>
+        <a href="index.html"><img class="a" src="img/logo.png" align="left" /></a>
+        <a href="cart.html"><img class="b" src="img/icon/cart.png" align="right"/></a>
+        <a href="member.html"><img class="b" src="img/icon/member.png" align="right"/></a>
         <div class="search">
-            <input type="text" placeholder="搜尋商品...">
-            <button>搜尋</button>
+            <input type="text" id="navSearchInput" placeholder="搜尋商品...">
+            <button onclick="handleNavSearch()">搜尋</button>
         </div>
         <nav>
             <a href="products.html">全部商品</a>
             <a href="activity.html">最新活動</a>
             <a href="member.html">會員專區</a>
+            <a href="aboutus.html">關於我們</a>
             <a href="qa.html">常見問題</a>
         </nav>
     </header>
-
     <main class="cart-page">
         <h2 class="page-title">我的購物車</h2>
         <table class="cart-table">
@@ -48,7 +48,7 @@
     <footer class="footer footer-advanced">
         <div class="footer-container">
             <div class="footer-col">
-                <img src="C:\Users\tracy\OneDrive\桌面\第十二組\img\logo.png" alt="logo" class="footer-logo">
+                <img src="img/logo.png" alt="logo" class="footer-logo">
                 <div class="footer-social">
                     <a href="https://www.instagram.com/xcy._.1208/"><img src="img/icon/instagram.png"></a>
                     <a href="mailto:tracy20051208@gmail.com"><img src="img/icon/envelope.png"></a>
@@ -56,10 +56,11 @@
             </div>
             <div class="footer-col">
                 <h2>快速連結</h2>
-                <a href="home.html">首頁</a>
+                <a href="index.html">首頁</a>
                 <a href="products.html">全部商品</a>
                 <a href="activity.html">最新活動</a>
                 <a href="member.html">會員專區</a>
+                <a href="aboutus.html">關於我們</a>
                 <a href="qa.html">常見問題</a>
             </div>
             <div class="footer-col">
@@ -70,5 +71,21 @@
         </div>
         <div class="footer-bottom">© 2026 花時間花店 All Rights Reserved.</div>
     </footer>
+    <script src="cartpage.js"></script>
+    <script>
+        function handleNavSearch() {
+        const searchInput = document.getElementById("navSearchInput");
+        if (!searchInput) return;
+
+        const keyword = searchInput.value.trim();
+
+        if (keyword === "") {
+            alert("請輸入搜尋關鍵字喔！");
+            return;
+        }
+        localStorage.setItem("searchKeyword", keyword);
+        window.location.href = "products.html";
+        }
+    </script>
 </body>
 </html>
